@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>      
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-success text-center">Form validation</h1><br>
+        <div class="col-lg-8  m-auto d-block">
+            <form action="#" onsubmit=" return validation()" class="bg-light">
+                <div class="form-group">
+                    <label> Username:</label>
+                    <input type="text" name="user" class="form-control" id="user">
+                    <span id="usernames" class="text-danger font-weight-bold"></span>
+                </div>
+                <div class="form-group">
+                    <label> password:</label>
+                    <input type="text" name="pass" class="form-control" id="pass">
+                    <span id="passwords" class="text-danger font-weight-bold"></span>
+                </div>
+                <div class="form-group">
+                    <label> Confirm Password:</label>
+                    <input type="text" name="conpass" class="form-control" id="conpass">
+                    <span id="confirmpass" class="text-danger font-weight-bold"></span>
+                </div>
+                <div class="form-group">
+                    <label> Mobile Number:</label>
+                    <input type="text" name="mobileno" class="form-control" id="mobileno">
+                    <span id="mobilenumber" class="text-danger font-weight-bold"></span>
+                </div>
+                <div class="form-group">
+                    <label> Email:</label>
+                    <input type="text" name="mail" class="form-control" id="mail">
+                    <span id="mails" class="text-danger font-weight-bold"></span>
+                </div> 
+                <input type="submit" name="submit"  value="submit" class="btn btn-success"> 
+            </form>
+        </div>
+    </div> 
+    
+    
+<script type="text/javascript">
+
+    function validation(){
+        var user=document.getElementById('user').value;
+        var pass=document.getElementById('pass').value;
+        var confirm=document.getElementById('conpass').value;
+        var mobile=document.getElementById('mobileno').value;
+        var mail=document.getElementById('mail').value;
+
+        if(user==""){
+            document.getElementById('usernames').innerHTML="*name is missing";
+            return false;
+        }
+        if((user.length<=2)||(user.length>20)){
+            document.getElementById('usernames').innerHTML="*name length should be in between 2 to 20";
+            return false;
+
+        }
+        if(!isNaN(user)){
+            document.getElementById('usernames').innerHTML="*only character are allowed";
+            return false;
+        }
+
+
+
+        if(pass==""){
+            document.getElementById('passwords').innerHTML="*password is missing";
+            return false;
+        }
+        if((pass.length<=8)||(pass.length>20)){
+            document.getElementById('passwords').innerHTML="*password length should be greater than 8 character";
+            return false;
+        }
+
+        
+
+
+        if(confirm==""){
+            document.getElementById('confirmpass').innerHTML="*enter the confirm password";
+            return false;
+        }
+        if(pass!=confirm){
+            document.getElementById('confirmpass').innerHTML="*please enter the confirm password";
+            return false;
+
+        }
+
+
+
+        if(mobile==""){
+            document.getElementById('mobilenumber').innerHTML="*mobile number is missing";
+            return false;
+        }
+        if(isNaN(mobile)){
+            document.getElementById('mobilenumber').innerHTML="*enter only digits not character";
+            return false;
+
+        }
+        if(mobile.length!=10){
+            document.getElementById('mobilenumber').innerHTML="*number should be 10 digits";
+            return false;
+
+        }
+
+
+
+        if(mail==""){
+            document.getElementById('mails').innerHTML="*email is missing";
+            return false;
+        }
+        if(mail.indexOf('@')<=0){
+            document.getElementById('mails').innerHTML="*@ in invalid position ";
+            return false;
+
+        }
+        if((mail.charAt(mail.length-4)!='.')&&(mail.charAt(mail.length-3)!='.')){
+            document.getElementById('mails').innerHTML="*. is in invalid position";
+            return false;
+        }
+    }
+
+</script>
+
+</body>
+</html>
